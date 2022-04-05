@@ -1,4 +1,4 @@
 require_relative "./game"
 
 game = Game.new
-game.play_turn
+game.start_game

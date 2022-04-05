@@ -4,8 +4,9 @@ class Display
   @@data = []
 
   def self.board(guess, clues)
+    @@data << :separator unless @@data.empty?
+
     @@data << [guess.join(', '), clues.join(', ')]
-    
     board = Terminal::Table.new :headings => ['Guess', 'Clues'], :rows => @@data
     board.align_column(0, :center)
     board.align_column(1, :center)

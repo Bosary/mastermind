@@ -2,12 +2,11 @@ class Code
   COLORS = ['Blank', 'White', 'Black', 'Blue', 'Red', 'Green', 'Yellow']
 
   def self.create_secret
-    secret_code = []
+    @secret = []
     4.times do 
-      secret_code << COLORS.sample
+      @secret << COLORS.sample
     end
-
-    secret_code
+    puts @secret
   end
 
   def self.guess
@@ -20,29 +19,31 @@ class Code
     guess_code
   end
 
-  def self.check(secret, guess)
+  def self.check(guess)
     clues = []
-    
-    if guess == secret
-      return "victory"
-    end
+    temp_guess = guess.map(&:clone)
+    temp_secret = @secret.map(&:clone)
 
-    # Add clues
-    guess.each do |color|
-      if secret.include?(color)
-        if secret.index(color) == guess.index(color)
-          clues << "Bullseye"
-        else
-          clues << "Good"
-        end
-      else
-        clues << "Miss"
+    temp_guess.each_index do |i|
+      if temp_guess[i] == temp_secret[i]
+        clues << "Bullseye"
+        temp_guess[i] = "*"
+        temp_secret[i] = "-"
       end
     end
 
-    clues
+    temp_guess.each_with_index do |color, i|
+      if temp_secret.include?(temp_guess[i])
+        clues << "Almost"
+        temp_guess[i] = "*"
+        temp_secret[temp_secret.index(color)] = "-"
+      end
+    end
+  
+    clues.shuffle
   end
 
-
-
+  def self.victory?(guess)
+    @secret == guess ? true : false
+  end
 end
