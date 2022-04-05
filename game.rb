@@ -3,6 +3,7 @@ require_relative "./display"
 
 class Game
   attr_accessor :guess, :clues
+  @@victory = false
 
   def initialize
     Code.create_secret
@@ -10,24 +11,25 @@ class Game
 
   def start_game
     turn = 0
-    @@victory = false
-    while turn <= 10 || victory
+    while turn <= 10
     play_turn
     turn += 1
+    break if @@victory
     end
-    end_game
+
+    end_game(turn)
   end
 
   def play_turn
     guess = Code.guess
     clues = Code.check(guess)
     Display.board(guess, clues)
-    Code.victory?(guess)
+    @@victory = Code.victory?(guess)
   end
 
-  def end_game
+  def end_game(turn)
     if @@victory
-      puts "You win"
+      puts "You won in #{turn} turn(s)"
     else
       puts "You lose"
     end

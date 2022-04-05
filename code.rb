@@ -44,6 +44,6 @@ class Code
   end
 
   def self.victory?(guess)
-    @secret == guess ? true : false
+    @secret == guess
   end
 end
