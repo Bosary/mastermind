@@ -11,14 +11,14 @@ class Computer
 
   def get_name(difficulty)
     case difficulty
-    when 'easy'
+    when 'Easy'
       name = "Stupidator"
-    when 'normal'
+    when 'Normal'
       name = "Rambozer"
-    when 'hard'
+    when 'Hard'
       name = "Godzi"
     else
-      p "Error"
+      p "Error, difficulty Computer Class"
     end
     return name
   end

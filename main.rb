@@ -1,19 +1,16 @@
-def render_ascii
-  file_path = File.join(__dir__, 'ascii_art.txt')
-  File.open(file_path).readlines.each do |line|
-    puts line
-  end
-end
+#Mastermind project
 
+# terminal-table gem is needed to display the board game
 
-render_ascii
+require_relative 'lib/display'
+include Display
+
+display_logo
 puts "\n\nWelcome to my mastermind project! Let's start!!!\n\n"
 puts "\n\nWith the settings........ \n\n"
 
 require_relative "lib/game"
 
 game = Game.new
- 
-puts game.p1.name
-puts game.p2.name
-puts game.difficulty
+game.play_match
+
