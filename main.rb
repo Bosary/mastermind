@@ -12,5 +12,5 @@ puts "\n\nWith the settings........ \n\n"
 require_relative "lib/game"
 
 game = Game.new
-game.play_match
+
 
