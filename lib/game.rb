@@ -48,8 +48,8 @@ class Game
     end_game(victory, turns, secret)
   end
 
-  def get_hints(secret, guess)
-
+  def get_hints(secret, guess) 
+    puts "Explanation: 'Perfect' = perfect match color/position. 'Good' = Color match but wrong position"
     hints = []
     # Need to clone secret_code to modify the array 
     clone_secret = secret.map(&:clone)

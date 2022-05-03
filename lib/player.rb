@@ -1,7 +1,6 @@
 class Player
 
   attr_reader :name, :difficulty
-  attr_accessor :score
   def initialize(name, difficulty = "Human")
 
     @difficulty = difficulty
@@ -15,7 +14,6 @@ class Player
     else
       @name = name  # Human player
     end 
-    @score = 0
   end
     
 end

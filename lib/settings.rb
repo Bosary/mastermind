@@ -54,7 +54,7 @@ module Settings
       when '2'
         difficulty = "Normal"
       when '3'
-        difficulty = "Hard"
+        difficulty = "Normal"  #Hard not implemented yet
       else
         p "Error, Settings::set_settings"
       end
